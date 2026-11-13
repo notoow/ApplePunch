@@ -77,4 +77,55 @@ if(form){
  updateSelection();
 }
 renderCart();
+
+// Keep native scrolling; only move the editorial imagery and headline within their sections.
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+const hero=document.querySelector('.hero');
+const statement=document.querySelector('.statement');
+let scrollFrame=0;
+function renderScroll(){
+ scrollFrame=0;
+ if(reducedMotion.matches||innerWidth<=700){if(hero)hero.style.removeProperty('--hero-shift');if(statement)statement.style.removeProperty('--statement-travel');return;}
+ if(hero){const rect=hero.getBoundingClientRect();hero.style.setProperty('--hero-shift',Math.min(60,Math.max(0,-rect.top*.07))+'px');}
+ if(statement){const rect=statement.getBoundingClientRect();const progress=Math.min(1,Math.max(0,(innerHeight-rect.top)/(rect.height+innerHeight)));statement.style.setProperty('--statement-travel',String(Math.max(0,80-progress*140)));}
+}
+function scheduleScroll(){if(!scrollFrame)scrollFrame=requestAnimationFrame(renderScroll);}
+window.addEventListener('scroll',scheduleScroll,{passive:true});
+window.addEventListener('resize',scheduleScroll);
+reducedMotion.addEventListener('change',scheduleScroll);
+renderScroll();
+
+const cultivarInfo=[
+ {name:'부사',description:'후지라고도 부르는 대표적인 사과예요. 풍부한 과즙과 달콤한 맛으로 사랑받는 품종입니다.'},
+ {name:'엔부',description:'껍질뿐 아니라 과육에도 분홍빛에서 붉은빛이 도는 사과예요. 단맛과 산미가 함께 어우러집니다.'},
+ {name:'시나노골드',description:'노란 껍질이 특징인 사과예요. 과즙이 풍부하고 단맛과 산미의 균형이 좋은 품종입니다.'},
+ {name:'이지플',description:'홍로와 감홍을 교배해 만든 국내 육성 품종이에요. 달콤하면서도 진한 맛이 특징입니다.'}
+];
+const guide=document.querySelector('.variety-guide');
+if(guide){
+ const tooltip=guide.querySelector('.variety-tooltip');
+ const buttons=Array.from(guide.querySelectorAll('[data-variety]'));
+ let active=null,pinned=false,closeTimer=0,keyboardNavigation=false;
+ function hideGuide(){clearTimeout(closeTimer);tooltip.hidden=true;buttons.forEach(button=>{button.setAttribute('aria-expanded','false');button.removeAttribute('aria-describedby');});active=null;pinned=false;}
+ function showGuide(button,pin=false){
+  clearTimeout(closeTimer);
+  const info=cultivarInfo[Number(button.dataset.variety)];
+  buttons.forEach(item=>{item.setAttribute('aria-expanded',String(item===button));item.removeAttribute('aria-describedby');});
+  button.setAttribute('aria-describedby','variety-tooltip');
+  tooltip.querySelector('[data-variety-title]').textContent=info.name;
+  tooltip.querySelector('[data-variety-description]').textContent=info.description;
+  tooltip.hidden=false;active=button;pinned=pin;
+ }
+ document.addEventListener('keydown',event=>{if(event.key==='Tab')keyboardNavigation=true;if(event.key==='Escape')hideGuide();});
+ document.addEventListener('pointerdown',event=>{keyboardNavigation=false;if(!guide.contains(event.target))hideGuide();});
+ buttons.forEach(button=>{
+  button.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse')showGuide(button);});
+  button.addEventListener('focus',()=>{if(keyboardNavigation)showGuide(button);});
+  button.addEventListener('click',()=>{if(active===button&&pinned)hideGuide();else showGuide(button,true);});
+ });
+ guide.addEventListener('pointerenter',()=>clearTimeout(closeTimer));
+ guide.addEventListener('pointerleave',()=>{if(!pinned)closeTimer=setTimeout(hideGuide,180);});
+ guide.addEventListener('focusout',event=>{if(!guide.contains(event.relatedTarget))hideGuide();});
+}
+
 })();
