@@ -75,6 +75,10 @@ if(form){
   document.querySelector('[data-detail-sprite]').className='apple-sprite '+item.size;
   document.querySelector('[data-thumbnail-sprite]').className='apple-sprite '+item.size;
   const cultivar=cultivarByName[item.variety];
+  const stage=document.querySelector('.gallery-stage');
+  stage.dataset.variety=item.variety==='혼합'?'mixed':'single';
+  if(stage.dataset.gallery==='apples')document.querySelector('[data-gallery-caption]').textContent=item.variety==='혼합'?'혼합 구성 연출 이미지 · 실제 구성은 주문 시 확인해 주세요.':'상품 연출 이미지 · 구성은 선택 옵션에 따라 달라집니다.';
+
   document.querySelector('[data-selected-cultivar]').innerHTML=cultivarPhoto(cultivar)+'<div><strong>'+cultivar.name+(cultivar.name==='혼합'?' 구성':'')+'</strong><p>'+cultivar.description+'</p>'+tasteGuide(cultivar)+(cultivar.sweet?'<small class="taste-selection-note">품종의 일반적인 맛의 경향이며 실측값은 아니에요.</small>':'')+'</div>';
   document.querySelector('[data-mobile-total]').textContent=money(unitPrice(item)*item.quantity);
 
@@ -103,7 +107,7 @@ function renderScroll(){
  scrollFrame=0;
  if(reducedMotion.matches||innerWidth<=700){if(hero)hero.style.removeProperty('--hero-shift');if(statement)statement.style.removeProperty('--statement-travel');return;}
  if(hero){const rect=hero.getBoundingClientRect();hero.style.setProperty('--hero-shift',Math.min(60,Math.max(0,-rect.top*.07))+'px');}
- if(statement){const rect=statement.getBoundingClientRect();const progress=Math.min(1,Math.max(0,(innerHeight-rect.top)/(rect.height+innerHeight)));statement.style.setProperty('--statement-travel',String(Math.max(0,80-progress*140)));}
+ if(statement)statement.style.removeProperty('--statement-travel');
 }
 function scheduleScroll(){if(!scrollFrame)scrollFrame=requestAnimationFrame(renderScroll);}
 window.addEventListener('scroll',scheduleScroll,{passive:true});
@@ -160,7 +164,7 @@ if(form){
   galleryChoices.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
   galleryImage.hidden=choice==='apples';
   if(choice!=='apples'){galleryImage.src=views[choice].src;galleryImage.alt=views[choice].alt;}
-  galleryCaption.textContent=views[choice].caption;
+  galleryCaption.textContent=choice==='apples'&&form.querySelector('[name="variety"]:checked').value==='혼합'?'혼합 구성 연출 이미지 · 실제 구성은 주문 시 확인해 주세요.':views[choice].caption;
  }));
  const tabs=Array.from(document.querySelectorAll('[role="tab"]'));
  function selectTab(tab){

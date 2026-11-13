@@ -27,7 +27,7 @@ python -m http.server 5173 --bind 127.0.0.1
 - 품종명 안내: PC 호버·키보드 포커스, 모바일 탭으로 부사·엔부·시나노골드·이지플 특징을 확인합니다. 문구 근거는 `docs/varieties.md`에 정리했습니다.
 - 대표 사진과 당도·산미 점 표시를 함께 제공합니다. 사진 출처와 편집상 맛 가이드의 기준은 `docs/cultivar-photos.md`에 정리했습니다.
 - 상품 상세: 고정되는 큰 사진 갤러리, 사진으로 고르는 품종 옵션, 상품 안내·품종 가이드·주문 배송 탭, 모바일 주문 버튼을 제공합니다.
-- Graza의 비율을 참고한 얇은 고정 메뉴, 전체 높이 메인 화면, 스크롤에 따라 움직이는 큰 문구 구간을 적용했습니다. 움직임 줄이기 설정에서는 효과를 끕니다.
+- Graza의 비율을 참고한 얇은 고정 메뉴와 전체 높이 메인 화면을 적용했습니다. 큰 문구와 설명은 정상적인 문서 흐름으로 배치해 스크롤 중 겹치지 않도록 했습니다.
 
 표시 가격은 제공된 전단의 5kg 가격(대과 65,000원, 중과 55,000원, 소과 40,000원)을 사용합니다.
 감홍은 상자당 10,000원 추가로 계산합니다. 혼합 구성의 실제 준비 수량과 최종 주문은 전화로 확인하도록 안내합니다.
@@ -39,6 +39,7 @@ python -m http.server 5173 --bind 127.0.0.1
 - `assets/real-apple-box.webp`: 제공된 실제 포장 사진.
 - `assets/apple-table-hero.png`: 내장 image_gen으로 생성한 메인 연출 사진.
 - `assets/apple-products.png`: 내장 image_gen으로 생성한 3분할 상품 연출 사진. CSS로 각 영역을 표시합니다.
+- `assets/mixed-apple-box.png`: 실제 포장과 품종별 외관을 참고해 내장 image_gen으로 생성한 혼합 구성 연출 사진. 프롬프트는 `assets/MIXED-IMAGE-PROMPT.txt`에 있습니다.
 - `assets/IMAGE-PROMPTS.txt`: 이미지 생성 프롬프트와 제작 기록.
 - `assets/PretendardVariable.woff2`: Pretendard 1.3.9. 라이선스는 `assets/Pretendard-LICENSE.txt`.
 

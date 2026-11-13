@@ -31,6 +31,7 @@ jobs:
           cp assets/brand-logo.png assets/real-apple-box.webp assets/apple-table-hero.png assets/apple-products.png assets/PretendardVariable.woff2 assets/Pretendard-LICENSE.txt _site/assets/
           cp -r assets/cultivars _site/assets/
           cp assets/brand-wordmark.png _site/assets/
+          cp assets/mixed-apple-box.png _site/assets/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

@@ -1,0 +1,17 @@
+ASSET — mixed-apple-box.png
+Generation mode: built-in image_gen
+References: actual mixed apple packing photograph, Shinano Gold cultivar reference, Enbu cultivar reference, Easyple cultivar reference.
+Used as a labeled illustrative mixed-box feature and mixed selection product gallery image. Actual packing photograph remains separate.
+
+FINAL PROMPT
+
+Use case: photorealistic-natural.
+Asset: ONE square photograph for the mixed-apple feature on a Korean farm storefront.
+Primary request: a convincingly REAL photograph of a mixed box of Korean apples with clearly DIFFERENT apple cultivars, not a cluster of identical red apples. This is an illustrative product composition, no text or branding.
+Reference image 1 is the user's actual shipped apple box. Use its red/burgundy/yellow range, ordinary kraft cardboard box, white protective tray and pink protective foam sleeves as authentic packing cues. Reference image 2 shows real Shinano Gold apples: genuinely yellow skin, not red-blushed apples. Reference image 3 shows actual dark red Enbu apples. Reference image 4 is a cultivar information card showing red striped Easyple apples: use ONLY the fruit appearance, ignore all text, panels and graphics.
+Photo scene: an open, shallow rectangular kraft apple shipping box on an ordinary pale wooden table. Slightly angled overhead, like a careful photograph taken by a farmer in soft window light, natural ordinary surroundings. Entire open box and a little wooden surface visible. The fruit occupies most of the image.
+Inside the box: three genuinely golden YELLOW Shinano Gold apples with absolutely NO red blush, three irregular crimson-red striped Fuji-type apples, two darker deep burgundy Enbu apples, and two lighter red, lightly striped Easyple apples. Arrange these colors intermixed throughout the box, not grouped into monochrome rows. Distinct natural color differences are essential. Individual fruit in pink foam protective sleeves matching the actual reference box. Skin should have natural freckles, waxy matte bloom, small realistic irregularities, slight asymmetry and occasional minor marks. Two thin natural leaves at most, not a pile of decorative leaves.
+A small Enbu apple half with subtle believable pale-pink flesh may sit on the table just outside the box near its lower corner, showing the cultivar distinction. No bright watermelon red flesh.
+Lighting: soft side window daylight, neutral-warm white balance, restrained contrast, small imperfections, documentary food photography, normal 50mm lens, moderate depth of field keeping the box fruit sharp. Slight natural photographic grain. Not a glossy studio render. No dramatic beams or golden rays.
+Composition: centered square with breathing room around the kraft box. No readable labels, no price tags, no typography, no watermark, no hands, no people, no extra produce. Avoid identical cloned apples, over-shiny skins, perfection, CGI, fantasy orchards, wicker baskets, satin ribbons or ornamental packaging. Make the mix of solid yellow, deep burgundy and classic red immediately clear at thumbnail size.
+
