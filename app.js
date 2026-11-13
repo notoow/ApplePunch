@@ -43,7 +43,9 @@ function renderCart() {
  document.querySelectorAll('[data-cart-count]').forEach(el=>{el.textContent='['+count+']';});
  document.querySelector('[data-cart-total]').textContent=money(order.reduce((sum,item)=>sum+unitPrice(item)*item.quantity,0));
  const container=document.querySelector('[data-cart-items]');
+ const previousScrollTop=container.scrollTop;
  container.innerHTML=order.length ? order.map((item,index)=>`<article class="cart-item">${cultivarPhoto(cultivarByName[item.variety])}<div class="cart-item-copy"><div class="cart-item-title"><span>${sizes[item.size].name} 한 상자</span><button type="button" class="remove-item" data-remove="${index}" aria-label="${sizes[item.size].name} ${item.variety} 삭제">삭제</button></div><p>5kg · ${item.variety === '혼합' ? '혼합 구성' : item.variety}</p><div class="cart-item-controls"><div class="quantity-control"><button type="button" data-cart-change="-1" data-index="${index}" aria-label="${sizes[item.size].name} 수량 줄이기" ${item.quantity===1?'disabled':''}>−</button><span aria-label="상자 수" style="min-width:30px;text-align:center;font-size:13px">${item.quantity}</span><button type="button" data-cart-change="1" data-index="${index}" aria-label="${sizes[item.size].name} 수량 늘리기" ${item.quantity===99?'disabled':''}>+</button></div><strong>${money(unitPrice(item)*item.quantity)}</strong></div></div></article>`).join('') : '<div class="empty-cart">아직 고른 사과가 없어요.<br><a href="index.html#products" data-browse>사과 고르러 가기 ↗</a></div>';
+ container.scrollTop=previousScrollTop;
  document.querySelector('[data-copy-order]').disabled=order.length===0;
 }
 document.querySelectorAll('[data-open-cart]').forEach(button=>button.addEventListener('click',()=>{closeMenu();renderCart();dialog.showModal();}));
@@ -52,8 +54,8 @@ dialog.addEventListener('click',event=>{if(event.target===dialog){const rect=dia
 dialog.addEventListener('click',event=>{
  const remove=event.target.closest('[data-remove]');
  const change=event.target.closest('[data-cart-change]');
- if(remove){const position=Number(remove.dataset.remove);order.splice(position,1);saveOrder();const next=dialog.querySelector('[data-remove]')||dialog.querySelector('[data-close-cart]');next.focus();}
- if(change){const position=Number(change.dataset.index);const amount=Number(change.dataset.cartChange);if(order[position]){order[position].quantity=clamp(order[position].quantity+amount);saveOrder();const replacement=dialog.querySelector('[data-index="'+position+'"][data-cart-change="'+amount+'"]');if(replacement&&!replacement.disabled)replacement.focus();else dialog.querySelector('[data-close-cart]').focus();}}
+ if(remove){const position=Number(remove.dataset.remove);order.splice(position,1);saveOrder();const next=dialog.querySelector('[data-remove="'+Math.min(position,order.length-1)+'"]')||dialog.querySelector('[data-close-cart]');next.focus({preventScroll:true});}
+ if(change){const position=Number(change.dataset.index);const amount=Number(change.dataset.cartChange);if(order[position]){order[position].quantity=clamp(order[position].quantity+amount);saveOrder();const replacement=dialog.querySelector('[data-index="'+position+'"][data-cart-change="'+amount+'"]');if(replacement&&!replacement.disabled)replacement.focus({preventScroll:true});else dialog.querySelector('[data-close-cart]').focus({preventScroll:true});}}
  if(event.target.closest('[data-browse]'))dialog.close();
 });
 document.querySelector('[data-copy-order]').addEventListener('click',async()=>{
@@ -187,14 +189,22 @@ if(form){
  function updateMobileBar(){
   const formBox=form.getBoundingClientRect();
   const buttonBox=addButton.getBoundingClientRect();
-  const buttonVisible=buttonBox.top>=64&&buttonBox.bottom<=innerHeight;
-  mobileBar.hidden=innerWidth>700||formBox.top>=innerHeight-110||buttonVisible||dialog.open;
+  const viewportHeight=window.visualViewport?.height||innerHeight;
+  const editingQuantity=document.activeElement===form.querySelector('#quantity');
+  // The dock only helps before the form's own button comes into view.
+  // It does not follow the visitor into the guide, packing section or footer.
+  mobileBar.hidden=innerWidth>700||formBox.top>=viewportHeight-110||buttonBox.top<viewportHeight||dialog.open||editingQuantity;
  }
  new IntersectionObserver(updateMobileBar,{threshold:[0,1]}).observe(addButton);
  const barObserver=new MutationObserver(updateMobileBar);
  barObserver.observe(dialog,{attributes:true,attributeFilter:['open']});
  window.addEventListener('scroll',updateMobileBar,{passive:true});
  window.addEventListener('resize',updateMobileBar);
+ form.addEventListener('focusin',updateMobileBar);
+ form.addEventListener('focusout',()=>requestAnimationFrame(updateMobileBar));
+ new ResizeObserver(updateMobileBar).observe(form);
+ window.visualViewport?.addEventListener('resize',updateMobileBar);
+
  updateMobileBar();
 }
 
