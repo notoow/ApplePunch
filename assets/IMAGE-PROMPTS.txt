@@ -1,0 +1,15 @@
+Image generation mode: built-in image_gen. No CLI/API fallback used.
+Both assets generated for the ApplePunch website on 2026-11-13.
+Generation originals retained in the Codex generated_images directory; project copies are in assets/.
+These are styled illustrative product/lifestyle photographs, not photographs of the actual farm or fulfilled orders.
+Actual packing is shown using the user-provided real-apple-box.webp.
+No Graza brand assets or photographs are embedded.
+
+ASSET 1 — apple-table-hero.png
+FINAL PROMPT:
+Use case: photorealistic-natural. Website full-bleed hero photograph for Korean apple farm "펀치볼 사과나라". Landscape 16:9. Natural editorial breakfast table photograph shot on 35mm film. On a worn warm oak kitchen table, a large shallow pale ceramic bowl overflowing with irregular fresh crimson red, burgundy and golden yellow Korean apples; one red apple cut into quarters on a simple small wooden board, off-white linen napkin and an ordinary water glass off to the side. Background softly defocused modest warm kitchen, not luxury. Main apple bowl sits on RIGHT two-thirds of the frame. Lower LEFT has darker empty wooden tabletop to overlay a white website headline; keep this space visually calm and low detail. Side window natural light, believable soft shadow, tactile speckled apple skins with matte waxy bloom, not shiny plastic. Composition sophisticated and spontaneous like a real independent food brand campaign. No people, no labels, no text, no lettering, no logo, no watermark, no packaging. No fantasy orchard, no floating leaves, no perfect symmetric fruit, no studio gradients. Preserve natural photographic realism and subtle grain. Red and golden apples must both be visible.
+
+ASSET 2 — apple-products.png
+FINAL PROMPT:
+Use case: product-mockup. Create a wide landscape 3:1 high-resolution food product photography contact sheet with exactly THREE equal-width square photographic compositions side by side, no borders and no text. All three have identical plain solid warm light peach background #f3e5d4 and floor, real soft natural daylight and gentle contact shadows. LEFT SQUARE: a small cluster of three large fresh crimson red Fuji-like Korean apples with natural speckles and stems, one slightly behind, one sliced wedge nearby. CENTER SQUARE: a small cluster of four medium darker burgundy Korean apples with natural slight imperfections and stems, one slice showing cream interior. RIGHT SQUARE: a small cluster of five smaller golden-yellow and red apples mixed, varied sizes. Each group centered in its own square with generous empty space around all edges, no fruit crossing between the three squares. Consistent real food photography, matte waxy skin, light grain, not glossy CGI, no leaves, no props, no bowls, no boxes, no labels, no logos, no typography, no watermark. Clearly separated clusters for using each third as a separate website product image.
+
