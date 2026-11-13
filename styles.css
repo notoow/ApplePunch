@@ -257,3 +257,19 @@ html{scroll-padding-top:80px}section[id],div[id]{scroll-margin-top:80px}
 .cart-disclaimer{font-size:9px;margin-top:11px}
 }
 @media(max-width:360px){.variety-names{gap:8px}.variety-name>.cultivar-photo{width:57px}.variety-name>span:last-child{font-size:11px}.detail-copy{padding-left:15px;padding-right:15px}.purchase-panel{padding-left:13px;padding-right:13px}.cultivar-option small{font-size:7px}.cultivar-option .cultivar-photo{width:54px}.contact-strip{flex-direction:column;align-items:flex-start}.mobile-order-bar{padding-left:14px;padding-right:14px;gap:10px}.mobile-order-bar .pill{padding:10px 13px;font-size:11px}}
+
+/* Original business-card lettering, arranged horizontally without the basket. */
+.brand{width:241px;height:43px;position:relative}
+.brand-filter-defs{position:absolute;overflow:hidden;pointer-events:none}
+.brand-lockup{display:flex;align-items:center;gap:7px;width:241px;height:43px}
+.brand-fragment{position:relative;display:block;overflow:hidden;flex-shrink:0}
+.brand-first{width:94px;height:43px}
+.brand-second{width:140px;height:37px}
+.brand-fragment img{position:absolute;width:188px;height:81px;max-width:none;filter:none}
+.brand-first img{left:0;top:0}
+.brand-second img{left:-49px;top:-44px}
+.home-page .site-header:not(.scrolled) .brand-fragment img{filter:brightness(0) invert(97%) sepia(10%)}
+@media(max-width:1000px) and (min-width:701px){.brand{width:205px;height:37px}.brand-lockup{transform:scale(.85);transform-origin:top left}}
+@media(max-width:700px){.brand{width:145px;height:26px}.brand-lockup{transform:scale(.6);transform-origin:top left}}
+@media(max-width:360px){.brand{width:135px;height:25px}.brand-lockup{transform:scale(.56)}}
+

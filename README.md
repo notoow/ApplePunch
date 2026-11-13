@@ -1,7 +1,7 @@
 # ApplePunch · 펀치볼 사과나라
 
 Graza의 화면 구성과 스크롤 흐름을 참고한 농장 사과 판매 웹사이트입니다.
-텍스트 워드마크와 실제 포장 사진, Pretendard를 사용합니다.
+명함의 손글씨 로고를 가로로 배치한 워드마크와 실제 포장 사진, Pretendard를 사용합니다.
 
 배포 주소: https://notoow.github.io/ApplePunch/
 
@@ -35,6 +35,7 @@ python -m http.server 5173 --bind 127.0.0.1
 ## 에셋
 
 - `assets/brand-logo.png`: 제공된 명함에서 중앙 로고 영역만 분리한 이미지.
+- `assets/brand-wordmark.png`: 제공된 투명 배경 손글씨 로고 원본. CSS로 ‘펀치볼’과 ‘사과나라’를 나눠 가로로 배치하며, 헤더에서 홈으로 연결됩니다.
 - `assets/real-apple-box.webp`: 제공된 실제 포장 사진.
 - `assets/apple-table-hero.png`: 내장 image_gen으로 생성한 메인 연출 사진.
 - `assets/apple-products.png`: 내장 image_gen으로 생성한 3분할 상품 연출 사진. CSS로 각 영역을 표시합니다.
