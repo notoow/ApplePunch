@@ -264,7 +264,7 @@ html{scroll-padding-top:80px}section[id],div[id]{scroll-margin-top:80px}
 .brand-lockup{display:flex;align-items:flex-end;gap:14px;width:248px;height:44px}
 .brand-fragment{position:relative;display:block;overflow:hidden;flex-shrink:0}
 .brand-first{width:94px;height:44px}
-.brand-second{width:140px;height:38px}
+.brand-second{width:140px;height:38px;clip-path:inset(3px 0 0)}
 .brand-fragment img{position:absolute;width:188px;height:81px;max-width:none;filter:none}
 .brand-first img{left:0;top:0}
 .brand-second img{left:-48px;top:-43px}
